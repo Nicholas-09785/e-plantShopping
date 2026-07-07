@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
+import { useDispatch } from 'react-redux';
 import { addItem, removeItem, updateQuantity } from './CartSlice';
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
+    const dispatch = useDispatch();
 
     const plantsArray = [
         {
@@ -290,7 +292,7 @@ function ProductList({ onHomeClick }) {
                     {plantsArray.map((category, index) => ( // Loop through each category in plantsArray
                         <div key={index}> {/* Unique key for each category div */}
                         <h1>
-                            <div>{category.category}</div> {category.category}
+                            <div>{category.category}</div>
                         </h1>
                         <div className="product-list"> {/* Container for the list of plant cards */}
                             {category.plants.map((plant, plantIndex) => ( // Loop through each plant in the current category
